@@ -1,1 +1,11 @@
-# codecademy_capstone
+The source code is located:
+capstone_starter/classify_sex_knr.py
+capstone_starter/classify_sex_naive_bayes.py
+capstone_starter/classify_sex_svc.py
+capstone_starter/predict_age_knr.py
+capstone_starter/predict_age_mlr.py
+capstone_starter/predict_income_knr.py
+capstone_starter/predict_income_mlr.py
+
+The presenation is located:
+capstone_starter/resources/Presentation_Emilian_Utma.pptx
