@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-from sklearn.metrics import confusion_matrix 
+from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, precision_score
 from sklearn.model_selection import train_test_split
 from time import time
 
@@ -61,11 +61,14 @@ def test_performance(data_frame):
     start = time()
     classifier = MultinomialNB()
     classifier.fit(X_train, y_train)
-    result1 = classifier.predict(X_test)
+    y_predicted = classifier.predict(X_test)
     print(classifier.score(X_test, y_test))
-    result = confusion_matrix(y_test,result1)
+    result = confusion_matrix(y_test,y_predicted)
+    accuracy_score_result = accuracy_score(y_test,y_predicted)
+    precision_result = precision_score(y_test,y_predicted)
+    recall_result = recall_score(y_test,y_predicted)
     print("execution time (sec) for test_performance:", time() - start)
-    return result
+    return result,accuracy_score_result,precision_result,recall_result
     
 
 def is_male(data_frame, review):
@@ -80,9 +83,9 @@ def is_male(data_frame, review):
 
 #Tests
 df = pd.read_csv("profiles.csv")
-print(is_male(df, "i want gud male"))
-print(is_male(df, "i'm from rich city"))
-print(is_male(df, "female friends only"))
+# print(is_male(df, "i want gud male"))
+# print(is_male(df, "i'm from rich city"))
+# print(is_male(df, "female friends only"))
 print(is_male(df, "i believe that life is a bold, dashing adventure"))
 print(test_performance(df))
 

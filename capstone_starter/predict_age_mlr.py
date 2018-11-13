@@ -56,7 +56,7 @@ def predict_age(data_frame, x_input):
 #Tests
 df = pd.read_csv("profiles.csv")
 print("What age is a person earning 50000 $ per year and job as 'science / tech / engineering':", predict_age(df, [[50000, 6]]))
-test_performance(df)
+print(test_performance(df))
 
 #Visualize data
 # x_train, x_test, y_train, y_test = get_test_data_set(df)

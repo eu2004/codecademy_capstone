@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.svm import SVC, LinearSVC
-from sklearn.metrics import confusion_matrix 
+from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, precision_score
 from sklearn.model_selection import train_test_split
 from time import time
 
@@ -73,16 +73,18 @@ def test_performance(data_frame):
     classifier = SVC(kernel='linear', C = 0.01)
     #classifier = LinearSVC()
     classifier.fit(X_train, y_train)
-    result1 = classifier.predict(X_test)
-    print(classifier.score(X_test, y_test))
+    y_predicted = classifier.predict(X_test)
+    accuracy_score_result = accuracy_score(y_test,y_predicted)
+    precision_result = precision_score(y_test,y_predicted)
+    recall_result = recall_score(y_test,y_predicted)
     print("execution time (sec) for test_performance:", time() - start)
-    return confusion_matrix(y_test,result1)
+    return confusion_matrix(y_test,y_predicted),accuracy_score_result,precision_result,recall_result
 
 #Tests
 df = pd.read_csv("profiles.csv")
-print(is_male(df, "i want gud male"))
-print(is_male(df, "i'm from rich city"))
-print(is_male(df, "female friends only"))
+# print(is_male(df, "i want gud male"))
+# print(is_male(df, "i'm from rich city"))
+# print(is_male(df, "female friends only"))
 print(is_male(df, "i believe that life is a bold, dashing adventure"))
 print(test_performance(df))
 

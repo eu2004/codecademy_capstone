@@ -48,7 +48,9 @@ def test_performance(data_frame, iteration_count):
         k_steps.append(k)
     print("execution time (sec) for test_performance:", time() - start)
     plt.plot(k_steps, train_score, label="Training score")
-    plt.plot(k_steps, test_score, label="Test score")    
+    plt.plot(k_steps, test_score, label="Test score")
+    plt.xlabel('k values')
+    plt.ylabel('Accuracy score')
     plt.legend(loc=8)
     plt.show()
     
